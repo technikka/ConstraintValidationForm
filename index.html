@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form novalidate>
+    <span>* required fields</span>
+    <label for="email">*Email</label>
+    <input type="email" name="email" required>
+    <span class="error" aria-live="polite"></span>
+
+    <label for="country">*Country</label>
+    <input type="text" name="country" required minlength="4">
+    <span class="error" aria-live="polite"></span>
+
+    <label for="zip-code">*Zip Code</label>
+    <input type="number" name="zip-code" required min="5" max="5" title="Must be 5 digit code">
+    <span class="error" aria-live="polite"></span>
+
+    <label for="password">*Password</label>
+    <input type="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+    <span class="error" aria-live="polite"></span>
+
+    <label for="confirm">*Confirm Password</label>
+    <input type="password" name="confirm" required>
+    <span class="error" aria-live="polite"></span>
+
+    <input type="submit">
+    <span class="error" aria-live="polite"></span>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
