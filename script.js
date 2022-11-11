@@ -11,6 +11,9 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     formError.textContent =
       "Please ensure all required fields (*) are filled in and all errors resolved";
+  } else {
+    event.preventDefault(); 
+    document.querySelector('img').classList.add('show');
   }
 });
 
@@ -19,8 +22,10 @@ const emailError = document.querySelector("input[name=email] + span.error");
 email.addEventListener("blur", (event) => {
   if (email.validity.valid) {
     emailError.textContent = "";
+    mark_valid(email);
   } else {
     displayEmailError();
+    mark_invalid(email);
   }
 });
 
@@ -31,8 +36,10 @@ const countryError = document.querySelector(
 country.addEventListener("blur", (event) => {
   if (country.validity.valid) {
     countryError.textContent = "";
+    mark_valid(country)
   } else {
     displayCountryError();
+    mark_invalid(country)
   }
 });
 
@@ -44,8 +51,10 @@ zipCode.addEventListener("blur", (event) => {
   console.log(zipCode.validity);
   if (zipCode.validity.valid) {
     zipCodeError.textContent = "";
+    mark_valid(zipCode);
   } else {
     displayZipCodeError();
+    mark_invalid(zipCode);
   }
 });
 
@@ -56,8 +65,10 @@ const passwordError = document.querySelector(
 password.addEventListener("blur", (event) => {
   if (password.validity.valid) {
     passwordError.textContent = "";
+    mark_valid(password);
   } else {
     displayPasswordError();
+    mark_invalid(password);
   }
 });
 
@@ -68,10 +79,22 @@ const confirmPwError = document.querySelector(
 confirmPw.addEventListener("blur", (event) => {
   if (confirmPw.value === password.value) {
     confirmPwError.textContent = "";
+    mark_valid(confirmPw);
   } else {
     displayConfirmPwError();
+    mark_invalid(confirmPw);
   }
 });
+
+function mark_valid(element) {
+  element.classList.add('valid');
+  element.classList.remove('invalid');
+}
+
+function mark_invalid(element) {
+  element.classList.add('invalid');
+  element.classList.remove('valid');
+}
 
 function displayEmailError() {
   if (email.validity.typeMismatch) {

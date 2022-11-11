@@ -4,20 +4,43 @@
 }
 
 body {
-  display: flex;
-  flex-flow: row nowrap;
+  display: grid;
   justify-content: center;
+  justify-items: center;
+  font-family: sans-serif;
 }
 
 form {
   display: flex;
   flex-flow: column wrap;
+  max-width: 210px;
 }
 
 form input {
   margin-bottom: 10px;
+  border: 1px solid grey; 
+  border-radius: 5px;
 }
 
 span.error {
-  color: var(--red);
+  background: var(--red);
+  border-radius: 5px;
+  color: white;
+}
+
+.invalid {
+  border-color: var(--red);
+}
+
+.valid {
+  border-color: var(--green);
+}
+
+img {
+  filter: invert(53%) sepia(25%) saturate(739%) hue-rotate(54deg) brightness(98%) contrast(89%);
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
 }
