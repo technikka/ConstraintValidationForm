@@ -1,3 +1,8 @@
+:root {
+  --green: #6a994e;
+  --red: #bc4749;
+}
+
 body {
   display: flex;
   flex-flow: row nowrap;
@@ -14,5 +19,5 @@ form input {
 }
 
 span.error {
-  color: red;
+  color: var(--red);
 }

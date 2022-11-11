@@ -9,7 +9,8 @@ form.addEventListener("submit", (event) => {
     !confirmPw.validity.valid
   ) {
     event.preventDefault();
-    formError.textContent = "Please ensure all required fields (*) are filled in"
+    formError.textContent =
+      "Please ensure all required fields (*) are filled in and all errors resolved";
   }
 });
 
@@ -40,6 +41,7 @@ const zipCodeError = document.querySelector(
   'input[name="zip-code"] + span.error'
 );
 zipCode.addEventListener("blur", (event) => {
+  console.log(zipCode.validity);
   if (zipCode.validity.valid) {
     zipCodeError.textContent = "";
   } else {
@@ -84,12 +86,8 @@ function displayCountryError() {
 }
 
 function displayZipCodeError() {
-  if (zipCode.validity.rangeOverflow) {
-    zipCode.textContent =
-      "That zip code is too long. Please enter a 5 digit zip code";
-  } else if (zipCode.validity.rangeUnderflow) {
-    zipCode.textContent =
-      "That zip code is too short. Please enter a 5 digit zip code";
+  if (zipCode.validity.patternMismatch) {
+    zipCodeError.textContent = "Please enter a valid zip code in either 12345 or 12345-6789";
   }
 }
 

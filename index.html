@@ -19,7 +19,7 @@
     <span class="error" aria-live="polite"></span>
 
     <label for="zip-code">*Zip Code</label>
-    <input type="number" name="zip-code" required min="5" max="5" title="Must be 5 digit code">
+    <input type="text" name="zip-code" required pattern="^[0-9]{5}(?:-[0-9]{4})?$" title="Can be 12345 or 12345-6789">
     <span class="error" aria-live="polite"></span>
 
     <label for="password">*Password</label>
